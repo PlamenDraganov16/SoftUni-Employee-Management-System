@@ -63,6 +63,10 @@ function App() {
 
     }
 
+    const sortUsersHandler = () => {
+        setUsers(state => [...state].sort((userA, userB) => new Date(userB.createdAt) - new Date(userA.createdAt)));
+    }
+
     return (
         <div>
             <Header />
@@ -71,7 +75,7 @@ function App() {
                 <section className="card users-container">
                     <SearchForm />
 
-                    <UserList users={users} forceRefresh={forceRefresh} />
+                    <UserList users={users} forceRefresh={forceRefresh} onSort={sortUsersHandler}/>
 
                     <button className="btn-add btn" onClick={addUserClickHandler}>Add new user</button>
 
