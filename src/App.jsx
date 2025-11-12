@@ -17,6 +17,34 @@ function App() {
         setShowCreateUser(false);
     }
 
+    const addUserSubmitHandler = (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+
+        const {country, city, street, streetNumber, ...userData} = Object.fromEntries(formData);
+        userData.address = {
+            country, 
+            city, 
+            street, 
+            streetNumber,
+        };
+
+        userData.createdAt = new Date().toISOString();
+
+        fetch('http://localhost:3030/jsonstore/users', {
+            method: 'POST',
+            header: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(userData)
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+            })
+    }
+
     return (
         <div>
             <Header />
@@ -34,7 +62,7 @@ function App() {
 
                 </section>
 
-                {showCreateUser && <CreateUserModal onClose={closeUserModalHandler} />}
+                {showCreateUser && <CreateUserModal onSubmit={addUserSubmitHandler} onClose={closeUserModalHandler} />}
             </main>
 
             <Footer />
