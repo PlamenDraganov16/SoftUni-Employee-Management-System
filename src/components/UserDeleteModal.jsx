@@ -1,9 +1,6 @@
-import { useEffect } from "react"
-
 export default function UserDeleteModal({
     onClose,
     userId,
-    forceRefresh,
 }) {
     
     const deleteUserHandler = async () => {
@@ -12,7 +9,6 @@ export default function UserDeleteModal({
             method: 'DELETE',
         })
             onClose();
-            forceRefresh();
         } catch (err) {
             alert(err.message);
         }
