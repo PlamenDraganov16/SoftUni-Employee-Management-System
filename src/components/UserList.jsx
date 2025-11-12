@@ -84,7 +84,6 @@ export default function UserList({
                     {users.map(user => <UserItem key={user._id} {...user} onDetailsClick={detailsActionClickHandler} />)}
                 </tbody>
             </table>
-
             {showUserDetails && <UserDetails userId={selectedUserId} onClose={closeModalHandler} />}
         </div>
     )
