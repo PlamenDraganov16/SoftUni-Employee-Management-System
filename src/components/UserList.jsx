@@ -13,6 +13,10 @@ export default function UserList() {
             .catch((err) => alert(err.message));  
     }, [])
 
+    const addUserClickHandler = () => {
+        console.log('add user');
+    }
+
     return (
         <div className="table-wrapper">
             {/* <!-- Overlap components  --> */}
@@ -80,7 +84,7 @@ export default function UserList() {
                 </tbody>
             </table>
 
-            <button className="btn-add btn">Add new user</button>
+            {/* <button className="btn-add btn" onClick={addUserClickHandler}>Add new user</button> */}
         </div>
     )
 }
