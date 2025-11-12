@@ -42,6 +42,7 @@ function App() {
         };
 
         userData.createdAt = new Date().toISOString();
+        userData.updatedAt = new Date().toISOString();
 
         fetch('http://localhost:3030/jsonstore/users', {
             method: 'POST',
@@ -50,8 +51,12 @@ function App() {
             },
             body: JSON.stringify(userData)
         })
-            .then(() => setForceRefresh(state => !state))
+            .then(() => {
+                closeUserModalHandler();
+                setForceRefresh(state => !state);
+            })
             .catch(err => alert(err.message));
+
     }
 
     return (
