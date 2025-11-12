@@ -13,9 +13,6 @@ export default function UserList() {
             .catch((err) => alert(err.message));  
     }, [])
 
-    const addUserClickHandler = () => {
-        console.log('add user');
-    }
 
     return (
         <div className="table-wrapper">
